@@ -1,0 +1,12 @@
+uc_ecr_project:
+  target: dev  # Default environment/target for DBT runs
+  outputs:
+    dev:  # The dev configuration for the Postgres connection
+      type: postgres
+      host: databasestack-dataanalysisdatabase444da0b4-87ewgjukuuik.cluster-ctow8mqqede0.eu-west-2.rds.amazonaws.com
+      user: postgres
+      password: 7B4I07lmvWNiWXgGUc4cNMaipmOuHzsl
+      port: 5432
+      dbname: db_01
+      schema: public
+      threads: 4

@@ -1,0 +1,1082 @@
+version: 2
+
+sources:
+  - name: raw_ecr_ssen_source
+    schema: public  # The schema where the source table lives
+    tables:
+      - name: raw_ecr_ssen
+        description: "This is the raw [ECR](https://www.dcusa.co.uk/embedded-capacity-register/) [SSEN](https://data.ssen.co.uk/@ssen-distribution/embedded_capacity_register) table. Within 10 Working Days following the end of each month, each DNO and IDNO will publish on their websites an updated ECR using the latest available information it holds as at the end of that month."
+
+  - name: raw_ecr_spen_source
+    schema: public
+    tables:
+      - name: raw_ecr_spen
+        description: "This is the raw [ECR](https://www.dcusa.co.uk/embedded-capacity-register/) [SPEN](https://spenergynetworks.opendatasoft.com/explore/dataset/embedded-capacity-register/information/?disjunctive.customer_name&disjunctive.customer_site&disjunctive.town_city&disjunctive.county&disjunctive.postcode&disjunctive.country&disjunctive.grid_supply_point) table. 
+        Within 10 Working Days following the end of each month, each DNO and IDNO will publish on their websites an updated ECR using the latest available information it holds as at the end of that month. The Embedded Capacity Register  (formerly the System Wide Resource Register) provides information on generation and storage resources (greater than or equal to 1MW) 
+        that are connected, or accepted to connect to the SP Energy Network's distribution network and will be updated on a monthly basis."
+      - name: raw_ecr_spen_small
+        description: "50kW - 1MW Threshold. Taken from the xlsx sheet as no json download appeared available."
+
+  - name: raw_ecr_nged_source
+    schema: public
+    tables:
+      - name: raw_ecr_nged
+        description: "This is the raw [ECR](https://www.dcusa.co.uk/embedded-capacity-register/) [NGED](https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register/resource/6b0cafec-386d-4bdf-89bd-d85765074995) table. Within 10 Working Days following the end of each month, each DNO and IDNO will publish on their websites an updated ECR using the latest available information it holds as at the end of that month."
+
+  - name: raw_ecr_ukpn_1_source
+    schema: public
+    tables:
+      - name: raw_ecr_ukpn_1
+        description: "This is the raw [ECR](https://www.dcusa.co.uk/embedded-capacity-register/) [UKPN](https://ukpowernetworks.opendatasoft.com/explore/dataset/ukpn-embedded-capacity-register-1-under-1mw/information/?disjunctive.grid_supply_point) less than 1 MW table. Within 10 Working Days following the end of each month, each DNO and IDNO will publish on their websites an updated ECR using the latest available information it holds as at the end of that month."
+
+  - name: raw_ecr_ukpn_2_source
+    schema: public
+    tables:
+      - name: raw_ecr_ukpn_2
+        description: "This is the raw [ECR](https://www.dcusa.co.uk/embedded-capacity-register/) [UKPN](https://ukpowernetworks.opendatasoft.com/explore/dataset/embedded-capacity-register/information/?disjunctive.licence_area) greater than 1 MW table. Within 10 Working Days following the end of each month, each DNO and IDNO will publish on their websites an updated ECR using the latest available information it holds as at the end of that month."
+
+  - name: raw_ecr_npgl_1_source
+    schema: public
+    tables:
+      - name: raw_ecr_npgl_1
+        description: "This is the raw [ECR](https://www.dcusa.co.uk/embedded-capacity-register/) [NPGL](https://northernpowergrid.opendatasoft.com/explore/dataset/embedded-capacity-register-part-2/information/) less than 1 MW table. Within 10 Working Days following the end of each month, each DNO and IDNO will publish on their websites an updated ECR using the latest available information it holds as at the end of that month."
+
+  - name: raw_ecr_npgl_2_source
+    schema: public
+    tables:
+      - name: raw_ecr_npgl_2
+        description: "This is the raw [ECR](https://www.dcusa.co.uk/embedded-capacity-register/) [NPGL](https://northernpowergrid.opendatasoft.com/explore/dataset/embedded-capacity-register/information/) greater than 1 MW table. Within 10 Working Days following the end of each month, each DNO and IDNO will publish on their websites an updated ECR using the latest available information it holds as at the end of that month."
+
+  - name: raw_ecr_enwl_1_source
+    schema: public
+    tables:
+      - name: raw_ecr_enwl_1
+        description: "This is the raw [ECR](https://www.dcusa.co.uk/embedded-capacity-register/) [ENWL](https://electricitynorthwest.opendatasoft.com/explore/dataset/enwl-embedded-capacity-register-1-under-1mw/export/) less than 1 MW table. Within 10 Working Days following the end of each month, each DNO and IDNO will publish on their websites an updated ECR using the latest available information it holds as at the end of that month."
+
+  - name: raw_ecr_enwl_2_source
+    schema: public
+    tables:
+      - name: raw_ecr_enwl_2
+        description: "This is the raw [ECR](https://www.dcusa.co.uk/embedded-capacity-register/) [ENWL](https://electricitynorthwest.opendatasoft.com/explore/dataset/enwl-embedded-capacity-register-2-1mw-and-above/export/) greater than 1 MW table. Within 10 Working Days following the end of each month, each DNO and IDNO will publish on their websites an updated ECR using the latest available information it holds as at the end of that month."
+
+  - name: geo_gb_dno_license_areas_source
+    schema: public
+    tables:
+      - name: geo_gb_dno_license_areas
+        description: "This [dataset](https://www.neso.energy/data-portal/gis-boundaries-gb-dno-license-areas) contains approximate GIS (geographic information system) geospatial boundaries for each of the DNO License Areas in Great Britain. There are 14 licensed Distribution Network Operators (DNOs) in Britain and each is responsible for a regional distribution services area. DNO License Areas are sometimes referred to as GSP Groups. The DNO License Area boundaries are unusual because they are only well defined when tested. The boundaries tend to run through rural areas and change over time whenever a new connection is added close to a boundary. DNO License Areas are widely used as an aggregation entity when reporting electricity network data."
+
+  - name: geo_enwl_primary_source
+    schema: public
+    tables:
+      - name: geo_enwl_primary
+        description: "ENWL Network Development Plan (NDP) - [BSP Voronoi polygons](https://electricitynorthwest.opendatasoft.com/explore/?sort=modified). initially created for individual distribution substations, the Voronoi polygons are initially grouped together based on the feeding Primary substation, then grouped by the feeding BSP to create an interlocking set of BSP polygons, each one encapsulating all the Primary & Distribution Substations on any one BSP network."
+
+  - name: geo_nged_primary_source
+    schema: public
+    tables:
+      - name: geo_nged_primary
+        description: "[National Grid Electricity Distribution](https://connecteddata.nationalgrid.co.uk/dataset/spatial-datasets) have developed an approach to geographically map areas of our network. These are defined an Electricity Supply Areas (ESA). This dataset contains the ESAs in addition to the process and validation for primary substations, BSP and GSP polygons."
+
+  - name: geo_npgl_primary_source
+    schema: public
+    tables:
+      - name: geo_npgl_primary
+        description: "[EHV Substation Combined Service Areas](https://northernpowergrid.opendatasoft.com/explore/dataset/substation_combined_service_areas/table/?disjunctive.substation_class&disjunctive.summary_overall_primary_classification&disjunctive.demand_classification&disjunctive.primary)
+        This dataset provides an interactive shape file that shows the service area of our EHV site’s. This shape file includes the service areas at the primary level, bulk supply level and grid supply point levels."
+
+  - name: geo_spen_spm_primary_source
+    schema: public
+    tables:
+      - name: geo_spen_spm_primary
+        description: "[NDP SPM Primary Group Polygons](https://spenergynetworks.opendatasoft.com/explore/dataset/ndp-spm-primary-group-polygons/information/) The geographic areas supplied by the primary substations and the grid supply points (GSPs) in SPD, and the primary substations, grid groups and GSPs in SPM. "
+
+  - name: geo_spen_spd_primary_source
+    schema: public
+    tables:
+      - name: geo_spen_spd_primary
+        description: "[NDP SPD Primary Substation Polygons](https://spenergynetworks.opendatasoft.com/explore/dataset/ndp-spd-primary-substation-polygons/information/) The geographic areas supplied by the primary substations and the grid supply points (GSPs) in SPD, and the primary substations, grid groups and GSPs in SPM. "
+
+  - name: geo_ssen_primary_source
+    schema: public
+    tables:
+      - name: geo_ssen_primary
+        description: "SSEN Shapefiles containing the SEPD geographical representation of the [Primary Substation Boundaries for SEPD & SHEPD](https://data.ssen.co.uk/@ssen-distribution/primary-substation-boundaries). The primary substation areas are formed from Voronoi polygons based off the point locations of all the secondary substations fed by a given primary substation. This means that every point in a polygon is closest geographically to the assigned secondary substation. The secondary substation polygons are then dissolved with respect to the primary they are connected to form the primary supply areas."
+      - name: geo_ssen_shepd_primary
+        description: "SSEN Shapefiles containing the SHEPD geographical representation of the [Primary Substation Boundaries for SEPD & SHEPD](https://data.ssen.co.uk/@ssen-distribution/primary-substation-boundaries). The primary substation areas are formed from Voronoi polygons based off the point locations of all the secondary substations fed by a given primary substation. This means that every point in a polygon is closest geographically to the assigned secondary substation. The secondary substation polygons are then dissolved with respect to the primary they are connected to form the primary supply areas."
+
+  - name: geo_ukpn_primary_source
+    schema: public
+    tables:
+      - name: geo_ukpn_primary
+        description: "[UK Power Networks primary substation distribution areas](https://ukpowernetworks.opendatasoft.com/explore/dataset/ukpn_primary_postcode_area/information/). This dataset is a geospatial view of the areas fed by primary substations. The aim is to create an indicative map showing the extent to which individual primary substations feed areas based on MPAN data."
+
+  - name: geo_ssen_sepd_bsp_source
+    schema: public
+    tables:
+      - name: geo_ssen_sepd_bsp
+        description: "SSEN Shapefiles containing the geographical representation of the [GSP and BSP](https://data.ssen.co.uk/@ssen-distribution/grid-supply-point-gsp-bulk-supply-point-bsp-electricity-supply-area-datasets) approximate supply areas for SEPD & SHEPD. These areas are formed by aggregating the primary substation boundaries that are supplied by each BSP/GSP (also available on the portal)."
+
+  - name: geo_npgl_ehv_substation_source
+    schema: public
+    tables:
+      - name: geo_npgl_ehv_substation
+        description: "[EHV Substation Combined Service Areas](https://northernpowergrid.opendatasoft.com/explore/dataset/substation_combined_service_areas/export/?disjunctive.substation_class&disjunctive.summary_overall_primary_classification&disjunctive.demand_classification&disjunctive.primary&location=7,54.46449,-1.22305&basemap=jawg.streets)
+        This dataset provides an interactive shape file that shows the service area of our EHV site’s. This shape file includes the service areas at the primary level, bulk supply level and grid supply point levels."
+
+  - name: geo_enwl_gsp_source
+    schema: public
+    tables:
+      - name: geo_enwl_gsp
+        description: "[ENWL GSP Heatmap](https://electricitynorthwest.opendatasoft.com/explore/dataset/enwl-gsp-heatmap/export/?location=8,54.16812,-2.70399&basemap=jawg.light) Dataset depicting all Grid Supply Points represented as interlocking voronoi polygons, The information contained in the dataset will enable developers to assess the level of capacity that might be available for new connections
+        to our network. This capacity dataset contains all the available capacity information on the Grid Supply Points connected to our network."
+
+  - name: geo_ssen_sepd_gsp_source
+    schema: public
+    tables:
+      - name: geo_ssen_sepd_gsp
+        description: "SSEN Shapefiles containing the geographical representation of the [GSP and BSP](https://data.ssen.co.uk/@ssen-distribution/grid-supply-point-gsp-bulk-supply-point-bsp-electricity-supply-area-datasets) approximate supply areas for SEPD & SHEPD. These areas are formed by aggregating the primary substation boundaries that are supplied by each BSP/GSP (also available on the portal)."
+
+  - name: geo_ssen_shepd_gsp_source
+    schema: public
+    tables:
+      - name: geo_ssen_shepd_gsp
+        description: "SSEN Shapefiles containing the geographical representation of the [GSP and BSP](https://data.ssen.co.uk/@ssen-distribution/grid-supply-point-gsp-bulk-supply-point-bsp-electricity-supply-area-datasets) approximate supply areas for SEPD & SHEPD. These areas are formed by aggregating the primary substation boundaries that are supplied by each BSP/GSP (also available on the portal)."
+
+  - name: geo_spen_spm_dfes_gsp_source
+    schema: public
+    tables:
+      - name: geo_spen_spm_dfes_gsp
+        description: "[SPM DFES Substation Polygons](https://spenergynetworks.opendatasoft.com/explore/dataset/spm-dfes-site-forecasts-polygons/information/?location=8,52.98397,-3.47646&basemap=jawg.streets&dataChart=eyJxdWVyaWVzIjpbeyJjb25maWciOnsiZGF0YXNldCI6InNwbS1kZmVzLXNpdGUtZm9yZWNhc3RzLXBvbHlnb25zIiwib3B0aW9ucyI6e319LCJjaGFydHMiOlt7ImFsaWduTW9udGgiOnRydWUsInR5cGUiOiJjb2x1bW4iLCJmdW5jIjoiQ09VTlQiLCJzY2llbnRpZmljRGlzcGxheSI6dHJ1ZSwiY29sb3IiOiIjNjZjMmE1In1dLCJ4QXhpcyI6InN1YnN0YXRpb25fbGV2ZWwiLCJtYXhwb2ludHMiOjUwLCJzb3J0IjoiIn1dLCJ0aW1lc2NhbGUiOiIiLCJkaXNwbGF5TGVnZW5kIjp0cnVlLCJhbGlnbk1vbnRoIjp0cnVlfQ%3D%3D)"
+
+  - name: geo_spen_spd_dfes_gsp_source
+    schema: public
+    tables:
+      - name: geo_spen_spd_dfes_gsp
+        description: "[SPD DFES Substation Polygons](https://spenergynetworks.opendatasoft.com/explore/dataset/spd-dfes-site-forecasts-polygons/export/?disjunctive.concat_subname_level&disjunctive.substation_name&location=8,55.5539,-3.48205&basemap=jawg.streets)"
+
+  - name: geo_ukpn_gsp_source
+    schema: public
+    tables:
+      - name: geo_ukpn_gsp
+        description: "[UK Power Networks Licence Area Grid Supply Points Areas](https://ukpowernetworks.opendatasoft.com/explore/dataset/ukpn-grid-supply-points/information/?location=7,51.87493,0.31124&basemap=jawg.light)"
+
+  - name: geo_points_uk_postcodes_source
+    schema: public  # The schema where the source table lives
+    tables:
+      - name: geo_points_uk_postcodes
+        description: "[Ordnance Survey: Code-Point](https://osdatahub.os.uk/downloads/open/CodePointOpen) Code-Point Open locates over 1.7 million postcode units for Great Britain, each having a notional geographical location. Postcodes are an alphanumeric abbreviated form of an address. Postcode units are
+          unique references and identify an average of 15 addresses. In some cases, where an address receives a substantial amount of mail, a postcode will apply to only one address and is defined as a large-user
+          postcode. The maximum number of addresses in a postcode is 100.
+          -PC: Postcode  
+          -PQ: Positional_quality_indicator  
+          -EA: Eastings  
+          -NO: Northings  
+          -CY: Country_code  
+          -RH: NHS_regional_HA_code  
+          -LH: NHS_HA_code  
+          -CC: Admin_county_code  
+          -DC: Admin_district_code  
+          -WC: Admin_ward_code  "
+
+  - name: geo_local_authority_districts_source
+    schema: public
+    tables:
+      - name: geo_local_authority_districts
+        description: "[Local Authority Districts (May 2024) Boundaries UK BFC](https://geoportal.statistics.gov.uk/datasets/ons::local-authority-districts-may-2024-boundaries-uk-bfc-2/about) This file contains the digital vector boundaries for Local Authority Districts, in the United Kingdom, as at May 2024.
+                      The boundaries available are: (BFC) Full resolution - clipped to the coastline (Mean High Water mark)."
+        columns:
+          - name: LAD24CD
+            description: "The unique code for the Local Authority District 2024."
+
+  - name: geo_zones_source
+    schema: public
+    tables:
+      - name: geo_zones
+        description: "[PyPSA-GB](https://github.com/andrewlyden/PyPSA-GB/tree/master/data/zone)."
+
+  - name: geo_natgrid_substation_hv_source
+    schema: public
+    tables:
+      - name: geo_natgrid_substation_hv
+        description: "[Network route maps](https://www.nationalgrid.com/electricity-transmission/network-and-infrastructure/network-route-maps). 
+        Substations in England and Wales."
+      - name: geo_natgrid_overhead_lines_hv
+        description: "[Network route maps](https://www.nationalgrid.com/electricity-transmission/network-and-infrastructure/network-route-maps). 
+        Overhead lines in England and Wales."
+      - name: geo_natgrid_cables_hv
+        description: "[Network route maps](https://www.nationalgrid.com/electricity-transmission/network-and-infrastructure/network-route-maps). 
+        Underground cables in England and Wales."
+      - name: geo_natgrid_towers_hv
+        description: "[Network route maps](https://www.nationalgrid.com/electricity-transmission/network-and-infrastructure/network-route-maps). 
+        HV towers in England and Wales."
+
+  - name: geo_natgrid_generation_zones_source
+    schema: public
+    tables:
+      - name: geo_tnuos_gen_zones
+        description: "[GIS Boundaries for GB Generation Charging Zones](https://www.neso.energy/data-portal/gis-boundaries-gb-generation-charging-zones) 
+        There are 27 TNUoS generation zones, and each is associated with a set of generation zonal tariffs. The total number of TNUoS generation zones may
+        change over time. In addition, the boundaries tend to flex over time when a new substation is added close to a boundary. Once we identify an existing 
+        substation that is the closest neighbour to the new substation (the “distance” is measured by site-specific incremental MWkm), the boundary is, 
+        theoretically, re-drawn to ensure that the new substation falls into the same generation zone that contains its nearest neighbouring substation. 
+        The boundaries are indicative and come with the disclaimer that they are not 100% accurate. That said, they are a good indication of the geography 
+        of TNUoS generation zones.."
+
+  - name: geo_natgrid_gsp_source
+    schema: public
+    tables:
+      - name: geo_natgrid_gsp
+        description: "[GIS Boundaries for GB Grid Supply Points](https://www.neso.energy/data-portal/gis-boundaries-gb-grid-supply-points) This dataset 
+        contains approximate GIS (Geographic Information System) geospatial boundaries associated with each of the Grid Supply Points (GSPs) on the GB 
+        transmission network. GSPs are points of connection between the Transmission System and a Distribution System. This includes Offshore Transmission; 
+        a GSP exists for when an offshore wind farm connects to a Distribution System."
+
+  - name: geo_osm_power
+    schema: public
+    tables:
+      - name: geo_osm_power_tower
+        description: "[OpenInfraMap](https://openinframap.org/about). Derived from OSM tags: power=pole power=tower power=portal"
+        columns:
+          - name: id
+            description: "OpenStreetMap object ID (relation IDs are negative)."
+          - name: ref
+            description: "Reference given to item."
+          - name: type
+            description: "OSM tag used to describe object."
+          - name: operator
+            description: "Name of the operator of the object."
+          - name: wd_operator
+            description: "Wikidata ID of the operator of the object."
+          - name: transition
+            description: ""
+          - name: construction
+            description: "Whether the object is under construction."
+          - name: geometry
+            description: "Geometry of the object in the WGS84 coordinate system."
+      - name: geo_osm_power_generator
+        description: "[OpenInfraMap](https://openinframap.org/about). Derived from OSM tags: power=generator"
+        columns:
+          - name: id
+            description: "OpenStreetMap object ID (relation IDs are negative)."
+          - name: name
+            description: "Name of the object in the local language."
+          - name: name_en
+            description: "Name of the object in English."
+          - name: operator
+            description: "Name of the operator of the object."
+          - name: wd_operator
+            description: "Wikidata ID of the operator of the object."
+          - name: construction
+            description: "Whether the object is under construction."
+          - name: source
+            description: "generator:source	Source of the energy generated."
+          - name: output
+            description: "generator:output:electricity	Output power of the generator (kW)."
+          - name: method
+            description: "generator:method	Method of generation (additional to source)."
+          - name: start_date
+            description: "start_date Date that object started operational service."
+          - name: geometry
+            description: "Geometry of the object in the WGS84 coordinate system."
+      - name: geo_osm_power_plant
+        description: "[OpenInfraMap](https://openinframap.org/about). Derived from OSM tags: power=plant"
+        columns:
+          - name: id
+            description: "OpenStreetMap object ID (relation IDs are negative)."
+          - name: name
+            description: "Name of the object in the local language."
+          - name: name_en
+            description: "Name of the object in English."
+          - name: wikidata
+            description: "Wikidata ID of the object."
+          - name: operator
+            description: "Name of the operator of the object."
+          - name: wd_operator
+            description: "Wikidata ID of the operator of the object."
+          - name: construction
+            description: "Whether the object is under construction."
+          - name: source
+            description: "plant:source	Source of the energy generated."
+          - name: method
+            description: "plant:method	Method of generation (additional to source)."
+          - name: output
+            description: "plant:output:electricity	Output power of the plant (kW)"
+          - name: start_date
+            description: "start_date Date that object started operational service."
+          - name: geometry
+            description: "Geometry of the object in the WGS84 coordinate system."
+      - name: geo_osm_power_substation
+        description: "[OpenInfraMap](https://openinframap.org/about). Derived from OSM tags: power=substation."
+        columns:
+          - name: id
+            description: "OpenStreetMap object ID (relation IDs are negative)."
+          - name: name
+            description: "Name of the object in the local language."
+          - name: name_en
+            description: "Name of the object in English."
+          - name: substation_type
+            description: "substation Type of substation (transmission, distribution, generation)."
+          - name: construction
+            description: "Whether the object is under construction."
+          - name: ref
+            description: "Reference given to item"
+          - name: operator
+            description: "Name of the operator of the object."
+          - name: wd_operator
+            description: "	operator:wikidata	Wikidata ID of the operator of the object."
+          - name: voltages
+            description: "voltage	Voltages used by the object (semicolon-separated, volts)."
+          - name: max_voltage
+            description: "voltage	Maximum voltage used by the object (volts)."
+          - name: frequency
+            description: "frequency	Frequency of the object (Hz). Converter substations may have multiple frequencies (semicolon-separated)."
+          - name: start_date
+            description: "start_date Date that object started operational service."
+          - name: geometry
+            description: "Geometry of the object in the WGS84 coordinate system."
+      - name: geo_osm_power_compensator
+        description: "[OpenInfraMap](https://openinframap.org/about). Derived from OSM tags: power=compensator"
+        columns:
+          - name: id
+            description: "OpenStreetMap object ID (relation IDs are negative)."
+          - name: ref
+            description: "ref Reference given to item."
+          - name: operator
+            description: "operator Name of the operator of the object"
+          - name: wd_operator
+            description: "operator:wikidata Wikidata ID of the operator of the object"
+          - name: geometry
+            description: "Geometry of the object in the WGS84 coordinate system."
+      - name: geo_osm_power_line
+        description: "[OpenInfraMap](https://openinframap.org/about). Derived from OSM tags: power=line power=minor_line power=cable power=minor_cable"
+        columns:
+          - name: id
+            description: "OpenStreetMap object ID (relation IDs are negative)."
+          - name: name
+            description: "OpenStreetMap object ID (relation IDs are negative)."
+          - name: name_en
+            description: "Name of the object in English."
+          - name: ref
+            description: "ref Reference given to item."
+          - name: operator
+            description: "operator Name of the operator of the object"
+          - name: wd_operator
+            description: "operator:wikidata Wikidata ID of the operator of the object"
+          - name: construction
+            description: "Whether the object is under construction."
+          - name: location
+            description: "location	Location of the object (underground, underwater, etc.)"
+          - name: max_voltage
+            description: "voltage	Maximum voltage used by the object (volts)."
+          - name: voltages
+            description: "voltage	Voltages used by the object (semicolon-separated, volts)."
+          - name: frequency
+            description: "frequency	Frequency of the object (Hz). Converter substations may have multiple frequencies (semicolon-separated)."
+          - name: circuits
+            description: "circuits	Number of circuits carried by a line"
+          - name: cables
+            description: "cables	Number of cables (conductors) carried by a line"
+          - name: start_date
+            description: "start_date	Date that object started operational service"
+          - name: geometry
+            description: "Geometry of the object in the WGS84 coordinate system."
+      - name: geo_osm_power_substation_polygon
+        description: "[OpenInfraMap](https://openinframap.org/about). Derived from OSM tags: power=substation."
+        columns:
+          - name: id
+            description: "OpenStreetMap object ID (relation IDs are negative)."
+          - name: name
+            description: "Name of the object in the local language."
+          - name: name_en
+            description: "Name of the object in English."
+          - name: substation_type
+            description: "substation Type of substation (transmission, distribution, generation)."
+          - name: construction
+            description: "Whether the object is under construction."
+          - name: ref
+            description: "Reference given to item"
+          - name: operator
+            description: "Name of the operator of the object."
+          - name: wd_operator
+            description: "	operator:wikidata	Wikidata ID of the operator of the object."
+          - name: voltages
+            description: "voltage	Voltages used by the object (semicolon-separated, volts)."
+          - name: max_voltage
+            description: "voltage	Maximum voltage used by the object (volts)."
+          - name: frequency
+            description: "frequency	Frequency of the object (Hz). Converter substations may have multiple frequencies (semicolon-separated)."
+          - name: start_date
+            description: "start_date Date that object started operational service."
+          - name: geometry
+            description: "Geometry of the object in the WGS84 coordinate system."
+      - name: geo_osm_power_switch
+        description: "[OpenInfraMap](https://openinframap.org/about). Derived from OSM tags: power=switch"
+        columns:
+          - name: id
+            description: "OpenStreetMap object ID (relation IDs are negative)."
+          - name: ref
+            description: "ref Reference given to item."
+          - name: operator
+            description: "operator Name of the operator of the object"
+          - name: wd_operator
+            description: "operator:wikidata Wikidata ID of the operator of the object"
+          - name: geometry
+            description: "Geometry of the object in the WGS84 coordinate system."
+      - name: geo_osm_power_transformer
+        description: "[OpenInfraMap](https://openinframap.org/about). Derived from OSM tags: power=transformer"
+        columns:
+          - name: id
+            description: "OpenStreetMap object ID (relation IDs are negative)."
+          - name: ref
+            description: "ref Reference given to item."
+          - name: operator
+            description: "operator Name of the operator of the object"
+          - name: wd_operator
+            description: "operator:wikidata Wikidata ID of the operator of the object"
+          - name: transformer
+            description: "transformer	Type of transformer"
+          - name: v_primary
+            description: "voltage:primary	Primary voltage of transformer (volts)"
+          - name: v_secondary
+            description: "voltage:secondary	Secondary voltage of transformer (volts)"
+          - name: v_tertiary
+            description: "voltage:tertiary	Tertiary voltage of transformer (volts)"
+          - name: rating
+            description: ""
+          - name: geometry
+            description: "Geometry of the object in the WGS84 coordinate system."
+      - name: geo_osm_power_generator_point
+        description: "[OpenInfraMap](https://openinframap.org/about). Derived from OSM tags: power=generator"
+        columns:
+          - name: id
+            description: "OpenStreetMap object ID (relation IDs are negative)."
+          - name: name
+            description: "Name of the object in the local language."
+          - name: name_en
+            description: "Name of the object in English."
+          - name: operator
+            description: "Name of the operator of the object."
+          - name: wd_operator
+            description: "Wikidata ID of the operator of the object."
+          - name: construction
+            description: "Whether the object is under construction."
+          - name: source
+            description: "generator:source	Source of the energy generated."
+          - name: output
+            description: "generator:output:electricity	Output power of the generator (kW)."
+          - name: method
+            description: "generator:method	Method of generation (additional to source)."
+          - name: start_date
+            description: "start_date Date that object started operational service."
+          - name: geometry
+            description: "Geometry of the object in the WGS84 coordinate system."
+
+  - name: geo_tzsam_solar_polygon_source
+    schema: public
+    tables:
+      - name: geo_tzsam_solar_polygon
+        description: "TZ-SAM is an open-access, asset-level dataset of solar facilities, powered by machine learning
+        [Solar Asset Mapper's (TZ-SAM)](https://www.transitionzero.org/products/solar-asset-mapper#tz-sam-download-form) algorithms use satellite data to detect small, commercial solar facilities globally. 
+        Updated quarterly, the dataset contains over 21,350 km² of solar across 190 countries with a combined, total 
+        estimated capacity of 853 GW."
+        columns:
+          - name: cluster_id
+            description: "Unique ID for the clustered asset."
+          - name: capacity_mw
+            description: "Estimated capacity of the asset in MWs."
+          - name: constructed_before
+            description: "Upper bound of the construction date based on the tike the image was taken."
+          - name: constructed_after
+            description: "Lower bound of the construction date based on the tike the image was taken."
+          - name: geometry
+            description: "Polygon or multipolygon defining the asset."
+
+  - name: raw_ro_accredited_stations_source
+    schema: public  # The schema where the source table lives
+    tables:
+      - name: raw_ro_accredited_stations
+        description: "[The Renewables and CHP Register](https://renewablesandchp.ofgem.gov.uk/Public/ReportManager.aspx?ReportVisibility=1&ReportCategory=0) is an online platform designed to manage various government-administered schemes:
+                    - Renewables Obligation (RO)
+                    - Renewable Energy Guarantees of Origin (REGO)
+                    - Feed-in Tariffs (FIT)
+                    - Climate Change Levy (CCL) exemption for Renewables
+                    The Register allows users to:
+                    - Apply for and manage new and existing accreditations
+                    - Submit or edit output data
+                    - Receive and transfer certificates, including Renewables Obligation Certificates (ROCs), Levy Exemption Certificates (LECs), and REGO certificates
+                    - Submit annual declarations
+                    - Access data reports
+                    Licensed electricity suppliers use the Register to:
+                    - Redeem ROCs to fulfill their Renewables Obligation
+                    - Hold REGOs as proof of Fuel Mix Disclosure (FMD)
+                    - Allocate or redeem LECs as evidence of CCL-exempt supplies to UK business customers."
+        columns:
+          - name: GeneratorID
+            description: "Unique ID for the generator."
+            data_tests:
+              - not_null
+              - unique
+
+  - name: raw_rego_accred_stations_ni_sco_wal_source
+    schema: public  # The schema where the source table lives
+    tables:
+      - name: raw_rego_accred_stations_ni_sco_wal
+        description: "[The Renewables and CHP Register](https://renewablesandchp.ofgem.gov.uk/Public/ReportManager.aspx?ReportVisibility=1&ReportCategory=0). Front end downloaded failed so needed to make two queries for the csv."
+        columns:
+          - name: GeneratorID
+            description: "Unique ID for the generator."
+            data_tests:
+              - not_null
+              - unique
+
+  - name: raw_rego_accred_stations_england_source
+    schema: public  # The schema where the source table lives
+    tables:
+      - name: raw_rego_accred_stations_england
+        description: "[The Renewables and CHP Register](https://renewablesandchp.ofgem.gov.uk/Public/ReportManager.aspx?ReportVisibility=1&ReportCategory=0). Front end downloaded failed so needed to make two queries for the csv."
+        columns:
+          - name: GeneratorID
+            description: "Unique ID for the generator."
+            data_tests:
+              - not_null
+              - unique
+
+  - name: raw_ccl_accred_stations_source
+    schema: public  # The schema where the source table lives
+    tables:
+      - name: raw_ccl_accred_stations
+        description: "[The Renewables and CHP Register](https://renewablesandchp.ofgem.gov.uk/Public/ReportManager.aspx?ReportVisibility=1&ReportCategory=0)"
+        columns:
+          - name: generator_id
+            description: "Unique ID for the generator."
+            data_tests:
+            - not_null
+            - unique
+
+  - name: lkup_accred_org_names_source
+    schema: public  # The schema where the source table lives
+    tables:
+      - name: lkup_accred_org_names
+        description: "Organisations by Reference of Generator id"
+
+  - name: lkup_fueltype_mappings_source
+    schema: public
+    tables:
+      - name: lkup_fueltype_mappings
+        description: "Manual input table of fuel type mappings"
+
+  - name: lkup_fit_ft_mapping_source
+    schema: public
+    tables:
+      - name: lkup_fit_ft_mapping
+        description: "Manual input table of fuel type mappings to FiT fuel types"
+
+  - name: lkup_co2region_dno_source
+    schema: public
+    tables:
+      - name: lkup_co2region_dno
+        description: "Look up of co2 region ids to the dno geo_ids."
+
+  - name: raw_pcd_lsoa_msoa_2021_lkup_source
+    schema: public  # The schema where the source table lives
+    tables:
+      - name: raw_pcd_lsoa_msoa_2021_lkup
+        description: "[ONS: Postcode Lookup](https://open-geography-portalx-ons.hub.arcgis.com/datasets/ons::postcode-to-oa-2021-to-lsoa-to-msoa-to-lad-august-2024-best-fit-lookup-in-the-uk/about) A best-fit lookup between postcodes, 2021 Census Output Areas (OA), Lower Layer Super Output Areas (LSOA), Middle Layer Super Output Areas (MSOA) and local authority districts (LAD). Postcodes are as at August 2024 in the UK and are best-fitted by plotting the location of the postcode's mean address into the areas of the output geographies.
+        - pcd7 (Postcode 7-character): This is a 7-character version of the postcode, which includes the outward code (area and district) and the inward code (sector and unit). It is typically padded with spaces to ensure a length of 7 characters. For example, a postcode might be formatted as 'W1A 1AA'.
+        - pcd8 (Postcode 8-character): This is an 8-character version of the postcode, ensuring that all postcodes are formatted to a consistent length of 8 characters. This often involves adding additional spaces where necessary. For example, 'W1A 1AA' would become 'W1A 1AA' (note the two spaces after the outward code)
+        - pcds (Postcode Standard): This is the standard format of the postcode without any padding for length. It represents the postcode as it is commonly used. For example, 'W1A 1AA'.
+        - lsoa21cd: Lower Super Output Areas (LSOAs) are a geographic hierarchy designed by the Office for National Statistics (ONS) for the purpose of statistical analysis and the reporting of census data. Each LSOA is designed to have a similar population size to allow for comparable statistical reporting. Typically, an LSOA contains between 1,000 and 3,000 people, or about 400 to 1,200 households. LSOAs are part of a hierarchical system that also includes Middle Super Output Areas (MSOAs) and Upper Super Output Areas (USOAs). 
+        - msoa21cd: Each MSOA covers a population of about 5,000 to 15,000 people, which typically translates to around 2,000 to 6,000 households."
+
+  - name: raw_fit_installations_source
+    schema: public
+    tables:
+      - name: raw_fit_installations
+        description: "[Quarterly Feed-in Tariff Installation Report](https://www.ofgem.gov.uk/publications/feed-tariff-installation-report-31-december-2024) 
+        The report is based on the installations registered on the Central FIT Register (CFR). Data shown in the report is based on the number of installations that have completed accreditation during the quarter. There are five technologies eligible under the FIT scheme. These are:
+        - Solar photovoltaic (PV): Up to 5MW Total Installed Capacity; assumed duration 25 years
+        - Wind: Up to 5MW; assumed duration 20 years
+        - Hydro: Up to 5MW; assumed duration 20 years
+        - Anaerobic digestion: Up to 5MW; assumed duration 20 years
+        - Micro-combined heat and power (CHP): Up to 2kW; assumed duration 10 years
+        Exporters In order to receive export payments, the FIT generator must have the ability to export and have opted in to receive export payment from the FIT licensee. A FIT generator is not entitled to export payments if it does not have the ability to export electricity or has chosen to negotiate a price for the exported electricity on the open market. An accredited FIT installation with a total installed capacity of over 30kW must have an export meter to receive export payments from the FIT licensee.
+        FIT payments must be made no less than quarterly, unless otherwise agreed in the Statement of FIT Terms. The levelisation process is the mechanism by which the cost of the FIT scheme is apportioned across Licensed Electricity Suppliers. The cost is apportioned based on each supplier’s share of the Great Britain electricity market, Periodic levelisation will take place quarterly. FIT year (1 April - 31 March). For the majority of installations the eligibility period is 20 years (10 years for micro CHP).
+        If you are a generator who received full accreditation without first seeking FIT preliminary accreditation the “Eligibility Date” is the later of: the date a full accreditation application was received by us – i.e. the date that the application was submitted via the Register, and the start date of the tariff period that the installation falls into"
+
+  - name: raw_repd_installations_source
+    schema: public
+    tables:
+      - name: raw_repd_installations
+        description: "[Renewable Energy Planning Database: quarterly extract](https://www.gov.uk/government/publications/renewable-energy-planning-database-monthly-extract) The Renewable Energy Planning Database (REPD) tracks the progress of UK renewable electricity projects over 150kW through the planning system. It provides as accurate and comprehensive a snapshot as possible of projects, and of progress across the technology sectors, through the following stages:
+        - inception
+        - planning
+        - construction
+        - operation
+        - decommissioning
+        The database is updated during the month following the end of each quarter. Please note: the minimum threshold for installed capacity was 1MW until 2021, at which point it was lowered to 150kW. This means that projects below 1MW that were going through planning system before 2021 may not be represented in the REPD. The data is sourced mostly from the web and developers."
+
+  - name: raw_fit_tariff_source
+    schema: public
+    tables:
+      - name: raw_fit_tariff
+        description: "Feed-in Tariff (FIT): [Tariff Table 1 April 2024](https://www.ofgem.gov.uk/publications/feed-tariff-fit-tariff-table-1-april-2024) 
+        This spreadsheet contains a list of all Feed-in Tariff Scheme tariffs applicable for those installations with an eligibility date between 
+        1 April 2010 to 31 March 2020."
+
+  - name: raw_cfd_register_source
+    schema: public
+    tables:
+      - name: raw_cfd_register
+        description: "[Register Data Archive](https://register.lowcarboncontracts.uk/downloadfiles)"
+        columns:
+          - name: cfd_unique_id
+            description: "Unique ID for the generator."
+            data_tests:
+              - not_null
+              - unique
+
+  - name: int_accred_location_source
+    schema: public
+    tables:
+      - name: int_accred_location
+        description: "Intermediate table for accredited locations."
+
+  - name: raw_co2_national_actual_source
+    schema: public
+    tables:
+      - name: raw_co2_national_actual
+        description: "The [Regional Carbon Intensity forecasts](https://carbonintensity.org.uk/) include CO2 emissions related to electricity generation
+        only. The forecasts include CO2 emissions from all large metered power stations, interconnector 
+        imports, transmission and distribution losses, and accounts for national electricity demand, and both
+        regional embedded wind and solar generation. Daily at 6am, the average generation mix of each
+        network the GB grid is connected to through interconnectors is collected for the previous 24
+        hours through the ENTSO-E Transparency Platform API."
+
+  - name: raw_co2_regional_actual_source
+    schema: public
+    tables:
+      - name: raw_co2_regional_actual
+        description: "National Energy System Operator (NESO), in partnership with Environmental Defense
+        Fund Europe and WWF, has developed a series of [Regional Carbon Intensity forecasts](https://carbonintensity.org.uk/) for
+        the GB electricity system, with weather data provided by the Met Office. NESO’s Carbon Intensity API has been extended
+        to include forecasts for 17 geographical regions of the GB electricity system up to 48 hours ahead of
+        real-time. It provides programmatic and timely access to forecast carbon intensity. The carbon intensity factors used in this
+        data service are based on the output-weighted average efficiency of generation in GB and DUKES CO2 emission factors for fuels."
+
+  - name: raw_dmd_msoa_nondom_source
+    schema: public
+    tables:
+      - name: raw_dmd_msoa_nondom
+        description: "[Non-Domestic electricity consumption by Middle Layer Super Output Area (MSOA)](https://www.data.gov.uk/dataset/ed629618-7b69-465d-8e0a-0546b1809fc7/lower-super-output-area-lsoa-middle-super-output-area-msoa-and-intermediate-geography-zone-igz-electricity-and-gas-estimates)
+        This workbook presents National Statistics on non-domestic electricity consumption by Middle Layer Super Output Area (MSOA) in Great Britain. This includes Intermediate Zones (Scotland's equivalent of MSOAs). While these statistics are presented at MSOA level for non-half hourly meters, 
+        the data on half hourly meters (which is far more disclosive) is only broken down by local authority. These figures are based on meter level electricity consumption data provided by data aggregators (who compile this data behalf of electricity suppliers). Electricity data is divided between 
+        domestic and non-domestic categories according to the meter’s profile class. Domestic consumption is based on Non-Half Hourly (NHH) meters with profiles 1 and 2 (these are the standard domestic and economy 7 tariffs respectively). Non-domestic consumption is based on NHH meters with 
+        profiles 3 to 8 and all Half-Hourly meters. In addition, profile 1 and 2 meters are re-allocated to the non-domestic sector if their annual consumption is greater than 100,000 kWh; or if their annual consumption is greater than 50,000 kWh and the address information for meter suggests 
+        that it is non-domestic."
+        columns:
+          - name: "Local authority code"
+            description: "This file contains the digital vector boundaries for Local Authority Districts, in the United Kingdom, as at May 2024.
+            The UK’s local government structure is hierarchical, with administrative counties, districts, and wards serving different functions:
+            - Administrative Counties: Higher-level local government units that may contain several districts or act as unitary authorities.
+            - **Districts:** Middle-tier units within counties or as unitary authorities, handling localized services.
+            - Wards: Smallest units used for electoral purposes, ensuring local representation within districts or unitary authorities."
+            data_tests:
+              - not_null
+
+  - name: raw_dmd_postcode_dom_source
+    schema: public
+    tables:
+      - name: raw_dmd_postcode_dom
+        description: "[Postcode level electricity statistics: 2022](https://www.gov.uk/government/statistics/postcode-level-electricity-statistics-2022) Postcode level electricity statistics for 2022, 
+        covering all domestic meters, and split by standard and economy 7 meters."
+
+  - name: raw_dmd_conserve_source
+    schema: public
+    tables:
+      - name: raw_dmd_conserve
+        description: "Table provided by Conserve, company names and demand."
+
+  - name: raw_dmd_praxis_source
+    schema: public  # The schema where the source table lives
+    tables:
+      - name: raw_dmd_praxis
+        description: "Table provided by service team of Feb-24 praxis mpan, company names and demand."
+      - name: raw_dmd_praxis_location
+        description: "Ran the mpans against the D217 data: Confirmation of the Registration of a Metering Point."
+
+  - name: raw_gen_nnfcc_ad_plants_source
+    schema: public
+    tables:
+      - name: raw_gen_nnfcc_ad_plants_may24
+        description: "[Biogas Map](https://www.biogas-info.co.uk/resources/biogas-map/) This Official Biogas Map shows all operational anaerobic digestion plants in the UK (excluding water treatment facilities).
+        Plants can be filtered by the following categories:
+        - Agricultural:  plants that use predominantly agricultural feedstock such as manures, slurries, crops and crop residues.
+        - Waste: plants that use predominantly municipal, commercial and industrial waste streams as feedstock.
+        Each is then further categorised by the end-use of the biogas:
+        - Heat and/or Power (CHP): an anaerobic digester generating biogas which is burned on-site to generate heat, power or both
+        - Biomethane to Grid (BtG): an anaerobic digester generating and upgrading biogas, to derive biomethane for injection into the national gas grid
+        "
+
+models:
+  - name: stg_raw_ecr_ssen
+    description: "A staging model for the raw_ecr_ssen table with aliased columns"
+    columns:
+      - name: export_mpan_msid
+        description: "The core meter point administration number, a 13-digit reference used in MPAS to identify the relevant Metering Point. For generation and storage sites, the 'Export' MPAN (or MSID for CVA registered sites) should be included. For 'Accepted to Connect' generation or storage entries, please indicate 'data not available'."
+      - name: import_mpan_msid
+        description: "The core meter point administration number, a 13-digit reference used in MPAS to identify the relevant Metering Point. For sites subject to a DSR contract and for storage sites, the 'Import' MPAN (or MSID for CVA registered sites) should be included. For generation sites, including generators taking on-site supplies, please indicate 'not applicable'. For 'Accepted to Connect' storage sites, please indicate 'data not available'."
+      - name: customer_name
+        description: "Name of the party that is connected or contracted to connect."
+      - name: customer_site
+        description: "Name of the customer site or project name."
+      - name: address_line_1
+        description: "Address line 1 of the customer site."
+      - name: address_line_2
+        description: "Address line 2 of the customer site."
+      - name: town_city
+        description: "Town or city of the customer site."
+      - name: county
+        description: "County of the customer site."
+      - name: postcode
+        description: "Postcode of the customer site."
+      - name: country
+        description: "Country of the customer site."
+      - name: x_coordinate
+        description: "Six-digit British National Grid X coordinate of the customer site."
+      - name: y_coordinate
+        description: "Six or seven digit British National Grid Y coordinate of the customer site."
+      - name: grid_supply_point
+        description: "The point of connection between the transmission system and the distribution system linked with the customer site."
+      - name: bulk_supply_point
+        description: "The supply point on the distribution system (representing an EHV/EHV transformation level) that is linked with the customer site."
+      - name: primary_boundary
+        description: "The primary substation on the distribution system that is linked with the customer site."
+      - name: poc
+        description: "The voltage at the Point of Connection to the distribution system."
+      - name: licence_area
+        description: "Licence area within which the customer site is connected."
+      - name: energy_source_1
+        description: "The primary energy source used in the production of electricity at the customer site."
+      - name: energy_tech_1
+        description: "The energy conversion technology used at the customer site."
+      - name: chp_cogen_1_yes_no
+        description: "Indicates whether the generation forms part of a CHP scheme at the customer site."
+      - name: sto_capacity_1_mwh
+        description: "The energy capacity of the storage facility (MWh). Hardcoded value = 'TBC'."
+      - name: sto_duration_1_hours
+        description: "Storage duration 1 (in hours). This is calculated by dividing the storage capacity (MWh) by the registered capacity (MW) and rounding down to the nearest 0.5 hours."
+      - name: energy_source_1_cap
+        description: "The registered capacity of energy source 1 in MW."
+      - name: energy_source_2
+        description: "Secondary energy source used in the production of electricity at the customer site."
+      - name: energy_tech_2
+        description: "The energy conversion technology used for energy source 2."
+      - name: chp_cogeneration_2_yes_no
+        description: "Indicates whether the generation forms part of a CHP scheme for energy source 2."
+      - name: sto_cap_2_mwh
+        description: "Energy capacity for storage 2 in MWh. Hardcoded value = 'DATA NOT AVAILABLE'."
+      - name: sto_dur_2_hours
+        description: "Storage duration for energy source 2, rounded to the nearest 0.5 hours."
+      - name: energy_source_2_cap
+        description: "Registered capacity of energy source 2 in MW."
+      - name: energy_source_3
+        description: "Tertiary energy source, if applicable. Usually blank."
+      - name: energy_tech_3
+        description: "The energy conversion technology used for energy source 3."
+      - name: chp_cogeneration_3_yes_no
+        description: "Indicates whether the generation forms part of a CHP scheme for energy source 3."
+      - name: sto_cap_3_mwh
+        description: "Energy capacity for storage 3 in MWh. Hardcoded value = 'DATA NOT AVAILABLE'."
+      - name: sto_dur_3_hours
+        description: "Storage duration for energy source 3, rounded to the nearest 0.5 hours."
+      - name: energy_source_3_cap
+        description: "Registered capacity of energy source 3 in MW. Hardcoded value = 'DATA NOT AVAILABLE'."
+      - name: flexible_connection_yes_no
+        description: "Indicates whether the connection is subject to a flexible connection arrangement."
+      - name: connection_status
+        description: "Indicates whether the site is 'Connected' or 'Accepted to Connect'."
+      - name: already_connected_cap_mw
+        description: "Registered capacity of generation already connected at the site, in MW."
+      - name: maximum_export_cap_mw
+        description: "Total MW export capacity permitted as per the connection agreement."
+      - name: maximum_export_cap_mva
+        description: "Total MVA export capacity permitted as per the connection agreement."
+      - name: maximum_import_cap_mw
+        description: "Total MW import capacity permitted as per the connection agreement."
+      - name: maximum_import_cap_mva
+        description: "Total MVA import capacity permitted as per the connection agreement."
+      - name: date_connected
+        description: "The date when the connection was provided for new connections, or the date new equipment was connected."
+      - name: accepted_to_connect_cap_mw
+        description: "Registered capacity of generation accepted to connect but not yet connected, expressed in MW."
+      - name: change_to_max_export_cap_mw
+        description: "New or additional MW export capacity accepted to connect, not yet connected."
+      - name: change_to_max_export_cap_mva
+        description: "New or additional MVA export capacity accepted to connect, not yet connected."
+      - name: change_to_max_import_cap_mw
+        description: "New or additional MW import capacity accepted to connect, not yet connected."
+      - name: change_to_max_import_cap_mva
+        description: "New or additional MVA import capacity accepted to connect, not yet connected."
+      - name: date_accepted
+        description: "The date when the customer accepted the connection offer from the DNO or IDNO."
+      - name: target_energisation_date
+        description: "Estimated date of energisation. This date is subject to change based on customer notification."
+      - name: dno_provider_yes_no
+        description: "Indicates whether a service is provided to the DNO."
+      - name: tso_provider_yes_no
+        description: "Indicates whether a service is provided to the Transmission Service Provider (TSO)."
+      - name: reference
+        description: "Unique reference for the service(s) being provided."
+      - name: in_queue_yes_no
+        description: "Indicates whether the connection is in a connection queue. Hardcoded value = 'TBC'."
+      - name: distribution_reinforcement_reference
+        description: "Unique reference for distribution reinforcement required for connection."
+      - name: transmission_reinforcement_reference
+        description: "Unique reference for transmission reinforcement required for connection."
+      - name: last_updated
+        description: "The date when the entry was last updated."
+
+  - name: stg_raw_repd_installations
+    description: "A staging model for the raw_repd_installations table with aliased columns and data type transformations."
+    columns:
+      - name: old_ref_id
+        description: "The old reference ID associated with a project in a previous version of the database."
+      - name: ref_id
+        description: "Project reference ID number in REPD database."
+      - name: last_updated
+        description: "Date a project record was last updated or checked."
+      - name: operator_or_applicant
+        description: "Name of operator or applicant."
+      - name: customer_site
+        description: "Name of development site."
+      - name: technology_type
+        description: "Type of technology (e.g. solar photovoltaics, offshore wind etc.)."
+      - name: storage_type
+        description: ""
+      - name: storage_coloc_repd_ref_id
+        description: ""
+      - name: registered_cap_1
+        description: "Installed electrical capacity in megawatts (MW)."
+      - name: share_community_scheme
+        description: ""
+      - name: chp_enabled
+        description: "Is the project capable of combined heat and power output."
+      - name: cfd_allocation_round
+        description: "The round of CFD funding the agreement was made."
+      - name: ro_banding_roc_mwh
+        description: ""
+      - name: fit_tariff_p_kwh
+        description: ""
+      - name: cfd_capacity_mw
+        description: "The agreed Contracts for Difference investment capacity."
+      - name: turbine_capacity_mw
+        description: "For windfarms, the individual capacity of each wind turbine in megawatts (MW)."
+      - name: no_of_turbines
+        description: "For windfarms, the number of wind turbines to be located on the development site."
+      - name: height_of_turbines_m
+        description: "For windfarms, the height of the wind turbines in metres (m)"
+      - name: mounting_type_for_solar
+        description: ""
+      - name: development_status
+        description: "Long description status name:
+        - No Application Required: A project that does not require planning permission has been announced by the developer.
+        - Planning Application Submitted: Planning application validated by planning authority.
+        - Planning Application Withdrawn: Planning application has been withdrawn by the applicant.
+        - Planning Permission Granted: Planning permission granted by planning authority.
+        - Planning Permission Refused: Planning permission refused by planning authority.
+        - Revised: The developer has submitted a revised planning application for the same project.
+        - Appeal Lodged: An appeal has been lodged by the applicant following a refusal of planning permission. 
+        - Appeal Withdrawn: An appeal against a refusal of planning permission has been withdrawn.
+        - Appeal Refused: An appeal has been refused (dismissed) by the planning inspectorate, such that the original refusal remains.
+        - Appeal Granted: An appeal against a planning refusal has been granted (upheld) and planning permission is therefore granted.
+        - Secretary of State: Called In - A planning application has been called in by the Secretary of State such that the Secretary of State will 
+        determine whether planning will be granted or refused.
+        - Secretary of State: Refusal - The Secretary of State has refused planning permission after calling-in a planning application for review.
+        - Secretary of State: Granted - The Secretary of State has granted planning permission after calling-in a planning application for review.
+        - Under Construction: A project is under construction. 
+        - Operational: A project is operational.
+        - Decommissioned: A project has been decommissioned and is no longer operating.
+        - Abandoned: Project has been abandoned by developer."
+      - name: development_status_short
+        description: "This is a description of the current status of the development in a more succinct form. 
+        For example, where a facility has obtained planning permission either directly from the Local Planning 
+        Authority, through an appeal, or from the Secretary of State, it is classified here as 'Awaiting Construction'. 
+        Where a development has been refused planning permission, either directly from the LPA, following an appeal, or 
+        from the Secretary of State, it is classified here as 'Application Refused'."
+      - name: are_they_re_applying_new_repd_ref
+        description: "Reference ID for the revised planning application for the same project"
+      - name: are_they_re_applying_old_repd_ref
+        description: "Reference ID for the previous planning application before project was revised."
+      - name: generating_station_address
+        description: "Site address of the development."
+      - name: county
+        description: "County the development site is located within."
+      - name: region
+        description: "Region the development site is located within."
+      - name: country
+        description: "Country the development site is located within."
+      - name: post_code
+        description: "Post code of the development site."
+      - name: x_coordinate
+        description: "X & Y coordinates for development site in British National Grid"
+      - name: y_coordinate
+        description: "X & Y coordinates for development site in British National Grid"
+      - name: planning_authority
+        description: "The relevant local planning authority for the project."
+      - name: planning_application_reference
+        description: "The reference number associated with the planning application."
+      - name: appeal_reference
+        description: "The reference number associated with an appeal"
+      - name: secretary_of_state_reference
+        description: "The reference number associated with a Secretary of State Intervention."
+      - name: type_of_secretary_of_state_intervention
+        description: "The type of Secretary of State of Intervention. This can be one of three types: recovery, call-in, or holding direction."
+      - name: judicial_review
+        description: "The latest date of when a legal challenge has been launched to review the lawfulness of a planning application and/or appeal decision."
+      - name: offshore_wind_round
+        description: "Leasing round in which an offshore wind project was established."
+      - name: planning_application_submitted
+        description: "Date planning application was validated."
+      - name: planning_application_withdrawn
+        description: "Date planning application was withdrawn."
+      - name: planning_permission_refused
+        description: "Date planning permission was refused."
+      - name: appeal_lodged
+        description: "Date an appeal was lodged."
+      - name: appeal_withdrawn
+        description: "Date an appeal was withdrawn."
+      - name: appeal_refused
+        description: "Date an appeal was refused (dismissed)."
+      - name: appeal_granted
+        description: "Date an appeal was granted (upheld)."
+      - name: planning_permission_granted
+        description: "Date planning permission was granted by the planning authority."
+      - name: secretary_of_state_intervened
+        description: "Date of a project that is 'Called In' by the Secretary of State."
+      - name: secretary_of_state_refusal
+        description: "Date planning permission was refused by the Secretary of State."
+      - name: secretary_of_state_granted
+        description: "Date planning permission was granted by the Secretary of State."
+      - name: planning_permission_expired
+        description: "Date a planning permission expires (as per the planning decision)."
+      - name: under_construction
+        description: "Date construction on site has begun."
+      - name: operational
+        description: "Date a project become operational."
+      - name: heat_network_ref
+        description: ""
+      - name: solar_site_area_sqm
+        description: ""
+
+  - name: stg_geo_ukpn_primary
+    description: "This dataset is a geospatial view of the areas fed by primary substations. The aim is to create an indicative map showing the extent to which individual primary substations feed areas based on MPAN data."
+    columns:
+      - name: primarysubstationname
+        description: "A Primary substation is any substation where the maximum voltage is between 22kV and 33kV."
+      - name: grid_supply_point
+        description: "The entry point for electricity onto the distribution network. Electricity typically leaves here at 132kV to feed some directly connected customers, grid substations or primary substations. Where there is too much connected generation, electricity is exported onto the transmission network instead of importing."
+      - name: grid_supply_point_floc
+        description: "Functional Location (FLOC): A unique code which represents the area where a piece of equipment can be installed (for example a transformer or pole). This means that even if the specific equipment is replaced or upgraded, it will be assigned to the same functional location."
+      - name: dno
+        description: "A DNO (Distribution Network Operator) is a company which operates the electricity distribution network which includes all parts of the network from 132kV down to 230V in England and Wales. In Scotland 132kV is considered to be a part of transmission rather than distribution so their operation is not included in the DNOs’ activities."
+      - name: demandrag
+        description: "Headroom: For a parameter which has a limit, this is the difference between the actual measured parameter and the limit. For example, for substation capacity, headroom would be the available unused capacity before the substation reaches its limit. Demand RAG and Headroom are calculated by dividing maximum demand by firm capacity. The data comes from LTDS Table 3b and the value shown is the most onerous season in the past year, and considers capacity from infrastructure not flexibility services."
+      - name: demand
+        description: "Demand is the rate at which electric power is delivered to or by a system or part of a system, generally expressed in kilowatts (kW) or megawatts (MW), at a given instant or averaged over any designated interval of time. Demand should not be confused with Load (a Load is usually a device). Same as: Consumption. See also: Load."
+
+  - name: stg_raw_ro_accredited_stations
+    description: "Extract generation site address"
+    columns:
+      - name: GeneratorID
+        description: "Unique ID for the generator."
+      - name: status_name
+        description: "Preliminary or Live"
+
+  - name: stg_raw_fit_tariff
+    description: "Cleaned FiT rates"
+    columns:
+      - name: tech_type
+        description: "Wind, Micro CHP, Hydro, Anaerobic digestion, Photovoltaic"
+      - name: pv_type
+        description: "Standard, Standalone, Retrofit, New Build"
+      - name: efficiency_rating
+        description: "Middle, Higher, Lower. The EER applies to certain solar PV installations with a capacity up to 250kW and an Eligibility Date on or after 1 April 2012. 
+        These installations must demonstrate that the building which they are wired to provide electricity to has achieved an Energy Performance Certificate (EPC) rating 
+        of level D or above or else receive a lower tariff rate.
+        Tariff rates for Solar PV installations are uniquely split into Higher, Middle and Lower bands. The tariff rate an installation receives 
+        depends on if the Energy Efficiency Requirement for the building that the installation is wired to provide electricity to has been met and if the owner is classed as a multi-site 
+        generator :
+        - Higher: An Energy Performance Certificate (EPC) of level D or above was issued before the commissioning date of the installation, and the owner is not classed as a multi-site generator
+        - Middle: An EPC of level D or above was issued before the commissioning date of the installation, and the owner is classed as a multi-site generator
+        - Lower: An EPC of level D or above was not issued before commissioning
+        This three-band structure only applies to Solar PV installations accredited after April 2012 and does not apply to the other technology types regardless of commissioning date."
+      - name: tariff
+        description: "A tariff rate is assigned to an accredited installation based on a number of factors including, but not limited to:
+        - the technology type  
+        - the total Installed Capacity (TIC)  
+        - the installation's position in deployment caps  
+        - if a solar installation, whether you are classed as a multi-site generator  
+        - if the installation is a solar installation, whether the generator is classed as a multi-site generator  
+        - If the installation is a solar installation, whether it meets the Energy Efficiency Requirement (EER)  
+        Generators may receive deemed export payments for installations with a capacity of 30 kilowatts or less if an export meter is not 
+        fitted. This is where export is estimated as a percentage of the generation meter reading, rather than being based on an export meter reading. "
+
+  - name: stg_raw_fit_installations
+    description: "Cleaned FiT installations"
+    columns:
+      - name: technology
+        description: "Wind, Micro CHP, Hydro, Anaerobic digestion, Photovoltaic"
+      - name: declared_net_capacity
+        description: "The DNC represents the maximum electrical output an installation can deliver to the grid, accounting for the energy consumed by the system itself. It's important to distinguish this from the 
+        Total Installed Capacity (TIC), which refers to the total capacity of all generating equipment without considering internal consumption. For FiT eligibility, the DNC is the determining factor."
+      - name: mcs_issue_date
+        description: "An MCS-FIT installation is either a solar PV or wind installation with a declared net capacity (DNC) at or below 50kW, or a micro CHP installation with a capacity up to the 2kW scheme maximum"
+      - name: export_status
+        description: " - Export (Deemed): assumed to export a fixed percentage of the electricity you generate, without actual measurement. These are typically installations without an export meter 
+        (e.g., small domestic solar systems), 
+        - Export (Negotiated Tariff): negotiated a separate deal for your exported electricity with an electricity supplier or another party. Typically larger or more commercial setups that want a bespoke export rate, 
+        often better than the standard FiT export rate, 
+        - Export (Standard Tariff): paid the standard export rate set under the FiT scheme,  
+        - No Export: Either you do not export any electricity to the grid (all your generation is used on-site), or you choose not to claim any export payments under FiT.
+        - No Export (Off-Grid). Export payments which are made based on estimated electricity export set by  the Department
+        for Energy Security and Net Zero. Installations are only eligible if they have a capacity of 30 kilowatts or less and do not have an export meter fitted."
+      - name: tariff_code
+        description: "There are 813 of these."
+      - name: tariff_description
+        description: "There are 354 of these."
+      - name: installation_type
+        description: "Community, Domestic, Non Domestic (Commercial), Non Domestic (Industrial)"
+      - name: local_authority
+        description: "There are 369 of these and they use the normal name not the code."
+      - name: constituency
+        description: "There are 639 of these and they use the normal name not the code."
+      - name: accreditation_route
+        description: "An MCS installation is either a solar PV or wind installation with a declared net capacity (DNC) at or below 50kW, or a micro CHP installation with a capacity up to the 2kW scheme maximum.
+        ROO-FIT installations are: solar PV and wind installations with a DNC above 50kW up to 5 MW and all AD and hydro installations. If you are the generator of a ROO-FIT installation, you must inform Ofgem (in addition
+        to your FIT licensee) of any changes to your installation or its ownership by updating the Renewables & CHP Register. If you are the generator of an MCS-FIT installation, you only need to inform your FIT 
+        licensee of any changes."
+      - name: extension_flag
+        description: "Y or N"
+      - name: community_school_category
+        description: "Community energy installation is defined as an eligible installation that: Supplies Electricity to a Non-Domestic Building: The installation must be wired to provide electricity to a building that is not a dwelling.
+        Owned by a Community Organisation: The FIT generator must be a community organisation and must have 50 or fewer employees."
+
+  - name: stg_lkup_accred_org_names
+    description: "Generator name look up."
+
+  - name: stg_raw_co2_regional_actual
+    description: "Breaks out the regional carbon intensity fuel type percentages."
+    columns:
+    - name: region_id
+      description: "Region ID 1-17."
+    - name: region_name
+      description: "Name of Distribution Network Operator (DNO) in region."
+    - name: short_name
+      description: "Name of region."
+    - name: intensity_forecast
+      description: "The forecast Carbon Intensity for the half hour in units gCO2/kWh."
+    - name: intensity_index
+      description: "The index is a measure of the Carbon Intensity represented on a scale between 'very low', 'low', 'moderate', 'high', 'very high'."
+    - name: generation_mix
+      description: "Fuel types mixes as percentages."
+
