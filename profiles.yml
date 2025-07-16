@@ -5,7 +5,7 @@ uc_ecr_project:
       type: postgres
       host: databasestack-dataanalysisdatabase444da0b4-87ewgjukuuik.cluster-ctow8mqqede0.eu-west-2.rds.amazonaws.com
       user: postgres
-      password: 7B4I07lmvWNiWXgGUc4cNMaipmOuHzsl
+      password: XXXXX
       port: 5432
       dbname: db_01
       schema: public
